@@ -2853,13 +2853,17 @@ function cssToAnsi(css, prevCss = null) {
   css = {
     ...css,
     color: css.color ? parseCssColor(css.color) : css.color,
-    backgroundColor: css.backgroundColor ? parseCssColor(css.backgroundColor) : css.backgroundColor,
-  }
+    backgroundColor: css.backgroundColor
+      ? parseCssColor(css.backgroundColor)
+      : css.backgroundColor,
+  };
   prevCss = {
-   ...prevCss,
-    color: prevCss.color? parseCssColor(prevCss.color) : prevCss.color,
-    backgroundColor: prevCss.backgroundColor? parseCssColor(prevCss.backgroundColor) : prevCss.backgroundColor,
-  }
+    ...prevCss,
+    color: prevCss.color ? parseCssColor(prevCss.color) : prevCss.color,
+    backgroundColor: prevCss.backgroundColor
+      ? parseCssColor(prevCss.backgroundColor)
+      : prevCss.backgroundColor,
+  };
   if (!colorEquals(css.backgroundColor, prevCss.backgroundColor)) {
     if (css.backgroundColor == null) {
       ansi += "\x1b[49m";
